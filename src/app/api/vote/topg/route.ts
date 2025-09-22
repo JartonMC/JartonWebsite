@@ -32,7 +32,11 @@ export async function GET(req: NextRequest) {
   const voterIp = ipParam.replace(/[^0-9\.]+/g, "");
 
   // Verify source IP against monitor.topg.org
-  const requestIp = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || req.ip || "";
+  const forwardedFor = req.headers.get("x-forwarded-for");
+const requestIp =
+  forwardedFor?.split(",")[0].trim() ||
+  req.headers.get("x-real-ip") ||
+  ""; 
   const topgIp = await resolveTopgIp();
 
   // Allow skipping IP check locally via env

@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: calc(100vw - 20px);
+  height: calc(var(--fontSize) - 2px);
+  background-color: var(--color6);
+  padding: 10px;
+  font-family: "Montserrat";
+  font-size: calc(var(--fontSize) - 2px);
+  position: relative;
+  z-index: 10;
+}

@@ -1,0 +1,10 @@
+{
+  "404": {
+    "title": "Page Not Found",
+    "text": "Looks like the queen bee made a mess in our servers. Let's take you back to safety"
+  },
+  "500": {
+    "title": "Internal Server Error",
+    "text": "Looks like our hive is having trouble talking to the server. Please try again shortly."
+  }
+}

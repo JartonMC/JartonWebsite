@@ -1,0 +1,121 @@
+.wiki {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(var(--windowWidth) - 20px);
+  position: relative;
+  font-family: "Quicksand";
+  background-color: rgba(var(--rgbColor6), 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.card {
+  width: 100%;
+  max-width: 1200px;
+  background: linear-gradient(180deg, rgba(var(--rgbColor6), 0.7), rgba(var(--rgbColor6), 0.9));
+  border: 1px solid rgba(var(--rgbColor4), 0.3);
+  border-radius: 22px;
+  box-shadow: var(--boxShadow3);
+  overflow: hidden;
+}
+
+.header {
+  padding: 28px 22px 14px;
+  text-align: center;
+  border-bottom: 1px solid rgba(var(--rgbColor4), 0.2);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(26px, 4vw, 38px);
+  font-family: "FredokaOne";
+  color: var(--color5);
+}
+
+.highlight {
+  color: var(--color2);
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  color: rgba(var(--rgbColor5), 0.8);
+  font-size: calc(var(--fontSize) + 4px);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sectionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.sectionCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(var(--rgbColor6), 0.8);
+  border: 1px solid rgba(var(--rgbColor4), 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  text-decoration: none;
+  color: var(--color5);
+  transition: all 0.3s ease-in-out;
+  min-height: 160px;
+}
+
+.sectionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--boxShadow2);
+  border-color: rgba(var(--rgbColor2), 0.5);
+  background: rgba(var(--rgbColor6), 0.9);
+}
+
+.sectionIcon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.sectionTitle {
+  margin: 0 0 8px;
+  color: var(--color2);
+  font-family: "FredokaOne";
+  font-size: calc(var(--fontSize) + 8px);
+}
+
+.sectionDescription {
+  margin: 0;
+  color: rgba(var(--rgbColor5), 0.8);
+  font-size: calc(var(--fontSize) + 1px);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .sectionsGrid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 16px;
+  }
+  
+  .sectionCard {
+    padding: 20px;
+    min-height: 140px;
+  }
+  
+  .sectionIcon {
+    font-size: 40px;
+  }
+  
+  .header {
+    padding: 20px 16px 10px;
+  }
+}

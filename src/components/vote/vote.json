@@ -1,0 +1,51 @@
+{
+  "title": "Vote for JartonMC",
+  "subtitle": "Help us grow! Vote on these sites and get sweet rewards in return.",
+  "serverIp": "mc.jarton.me",
+  "voteLinks": [
+    {
+      "name": "TopG",
+      "url": "https://topg.org/minecraft-servers/server-675398#vote"
+    },
+    {
+      "name": "MinecraftServers.org", 
+      "url": "https://minecraftservers.org/server/678024"
+    },
+    {
+      "name": "Minecraft-MP",
+      "url": "https://minecraft-mp.com/server-s347303"
+    },
+    {
+      "name": "PlanetMinecraft",
+      "url": "https://www.planetminecraft.com/server/jartonmc/"
+    }
+  ],
+  "rewards": {
+    "daily": [
+      "250 Gold Coins per vote",
+      "1 Vote Crate Key per site" 
+    ],
+    "streaks": [
+
+    ]
+  },
+  "topVoters": [],
+  "faq": [
+    {
+      "question": "Vote not working?",
+      "answer": "Sometimes it takes a few mins to register. Try '/vote check' in-game or ping staff on Discord if it's been more than 10 minutes."
+    },
+    {
+      "question": "Used wrong username",
+      "answer": "Oops! Votes are tied to whatever name you put in. You'll have to wait for the daily reset to vote again with the right name."
+    },
+    {
+      "question": "Can I vote on mobile?", 
+      "answer": "Yep! All these sites work fine on mobile browsers. Just make sure to use your exact Minecraft username."
+    }
+  ],
+  "discord": {
+    "text": "Questions? Join our Discord community!",
+    "url": "https://discord.gg/7tBwkGD4sN"
+  }
+}

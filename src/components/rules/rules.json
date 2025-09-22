@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Basic Rules",
+    "items": [
+      "Be respectful to everyone - no harassment, bullying, or hate speech",
+      "Keep chat and builds family-friendly (no NSFW content)",
+      "Don't pretend to be staff members or other players", 
+      "No excessive spam or caps lock in chat",
+      "Resolve conflicts maturely or ask staff for help"
+    ]
+  },
+  {
+    "title": "Gameplay Rules", 
+    "items": [
+      "No hacks, cheats, or exploits (x-ray, fly, speed hacks, etc.)",
+      "Report bugs with '/ticket' - don't abuse them",
+      "One main account per person (ask staff before using alts)",
+      "No griefing or stealing from other players",
+      "PvP is allowed in designated areas only"
+    ]
+  },
+  {
+    "title": "Building & Economy",
+    "items": [
+      "Build at least 100 blocks away from others unless given permission",
+      "No inappropriate builds, signs, or symbols",
+      "Don't duplicate items or abuse the economy",
+      "Shops must have fair prices (no scamming)",
+      "Clean up temporary builds and don't leave floating trees"
+    ]
+  },
+  {
+    "title": "Chat & Communication",
+    "items": [
+      "English only in global chat (other languages in /msg or party chat)",
+      "No advertising other servers or Discord links",
+      "Don't ask for staff ranks, items, or special treatment",
+      "Use appropriate channels in Discord",
+      "No drama or arguments in public chat"
+    ]
+  }
+]

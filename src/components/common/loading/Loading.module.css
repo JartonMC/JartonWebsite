@@ -1,0 +1,45 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: calc(var(--windowWidth) - 20px);
+  height: calc(
+    100vh - var(--headerHeight) - (var(--fontSize) + 20px + 20px + 20px - 2px)
+  );
+  position: relative;
+  font-family: "Quicksand";
+  gap: 20px;
+  background-color: rgba(var(--rgbColor6), 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+}
+
+.loading_title {
+  font-size: calc(var(--fontSize) + 24px);
+  font-weight: bold;
+  font-family: "FredokaOne";
+  color: var(--color2);
+  animation: glowingText 2s ease-in-out infinite;
+}
+
+@keyframes glowingText {
+  0% {
+    text-shadow: none;
+  }
+  50% {
+    text-shadow: var(--textShadow1);
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+.loading_text {
+  color: var(--color5);
+  font-size: calc(var(--fontSize) + 6px);
+  font-weight: bold;
+  width: calc(var(--windowWidth) * 80 / 100);
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Home",
+    "href": "/",
+    "target": "_self"
+  },
+  {
+    "name": "Wiki",
+    "href": "/wiki",
+    "target": "_self"
+  },
+  {
+    "name": "Store",
+    "href": "https://store.jarton.me",
+    "target": "_blank"
+  },
+  {
+    "name": "Rules",
+    "href": "/rules",
+    "target": "_self"
+  },
+  {
+    "name": "Vote",
+    "href": "/vote",
+    "target": "_self"
+  }
+]

@@ -18,6 +18,14 @@
     {
       "name": "PlanetMinecraft",
       "url": "https://www.planetminecraft.com/server/jartonmc/"
+    },
+    {
+      "name": "MinecraftServerList",
+      "url": "https://minecraft-server-list.com/server/514737/vote/"
+    },
+    {
+      "name": "MinecraftBuzz",
+      "url": "https://minecraft.buzz/server/16335"
     }
   ],
   "rewards": {

@@ -1,0 +1,39 @@
+name: Deploy Jarton Website (Next.js SSR)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Upload and build on VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+        run: |
+          set -e
+          RELEASE_DIR="/var/www/jarton.me/releases/$(date +%Y%m%d%H%M%S)"
+          ssh -p $VPS_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST "mkdir -p $RELEASE_DIR"
+          rsync -az --delete -e "ssh -p $VPS_PORT" ./ $VPS_USER@$VPS_HOST:$RELEASE_DIR/
+          ssh -p $VPS_PORT $VPS_USER@$VPS_HOST "
+            cd $RELEASE_DIR &&
+            npm ci &&
+            npm run build &&
+            ln -sfn $RELEASE_DIR /var/www/jarton.me/current &&
+            pm2 startOrReload /var/www/jarton.me/ecosystem.config.js &&
+            sudo systemctl reload nginx &&
+            (ls -1dt /var/www/jarton.me/releases/* | tail -n +6 | xargs -r rm -rf)
+          "

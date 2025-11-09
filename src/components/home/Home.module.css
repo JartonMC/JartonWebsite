@@ -50,6 +50,17 @@
   height: var(--websiteLogoSize);
   position: absolute;
   animation: jumping 5s ease-in-out infinite;
+  transition: scale 0.3s ease-in-out;
+}
+
+.home_websiteLogo img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.home_websiteLogo:hover {
+  cursor: crosshair;
+  scale: 1.05;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -213,6 +224,13 @@
   align-items: center !important;
   width: var(--windowWidth);
   height: fit-content;
+  position: relative;
+  /* Edge blur technique: apply a horizontal alpha mask so slides fade-out
+     at the left and right edges. */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 .home_cards_swiper_wrapper {
@@ -231,8 +249,11 @@
   gap: 10px;
   padding: 20px;
   background-color: var(--color4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-radius: 10px;
   box-shadow: var(--boxShadow3);
+  cursor: w-resize;
 }
 
 .home_cards_swiper_slide_title {

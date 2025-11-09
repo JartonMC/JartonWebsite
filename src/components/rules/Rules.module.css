@@ -207,10 +207,11 @@
 .contactInfo code {
   background: rgba(var(--rgbColor2), 0.2);
   color: var(--color2);
-  padding: 2px 6px;
   border-radius: 4px;
   font-family: "Minecraftia";
   font-size: calc(var(--fontSize) - 1px);
+  padding: 10px 6px 2px 6px;
+  line-height: calc(var(--fontSize));
 }
 
 /* Mobile responsiveness */

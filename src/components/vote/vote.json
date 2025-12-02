@@ -4,6 +4,10 @@
   "serverIp": "mc.jarton.me",
   "voteLinks": [
     {
+      "name": "Top.GG",
+      "url": "https://topg.org/minecraft-servers/server-675398"
+    }
+    {
       "name": "MinecraftServers.org", 
       "url": "https://minecraftservers.org/server/678024"
     },

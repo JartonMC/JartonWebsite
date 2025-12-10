@@ -51,6 +51,7 @@
   position: absolute;
   animation: jumping 5s ease-in-out infinite;
   transition: scale 0.3s ease-in-out;
+  top: 60px;
 }
 
 .home_websiteLogo img {

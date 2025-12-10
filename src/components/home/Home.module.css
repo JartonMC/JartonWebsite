@@ -54,13 +54,22 @@
   top: 60px;
 }
 
+@media (max-width: 600px) {
+  .home_websiteLogo {
+    top: 225px;
+    width: 130px;
+    height: 130px;
+    animation: none;
+  }
+}
+
 .home_websiteLogo img {
   user-select: none;
   -webkit-user-drag: none;
 }
 
 .home_websiteLogo:hover {
-  cursor: crosshair;
+  cursor: alias;
   scale: 1.05;
 }
 

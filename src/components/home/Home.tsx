@@ -7,7 +7,7 @@ import Status from "./status/Status";
 import Cards from "./cards/Cards";
 
 import styles from "./Home.module.css";
-import data from "./data.json";
+import { data } from "./data";
 
 const Home = () => {
   const [playersCount, setPlayersCount] = useState(0);
@@ -53,7 +53,7 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <div className={styles.home_websiteLogo}>
-        <Image src="/logos/website-logo.webp" alt="" fill priority />
+        <Image src="/logos/jarton.webp" alt="" fill priority />
       </div>
       <Status
         playersCount={playersCount}

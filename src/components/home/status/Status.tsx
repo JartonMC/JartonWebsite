@@ -6,7 +6,7 @@ import { TbBrandMinecraft } from "react-icons/tb";
 
 import notificationsStore from "@/store/notificationStore";
 
-import data from "../data.json";
+import { data } from "../data";
 
 import styles from "../Home.module.css";
 

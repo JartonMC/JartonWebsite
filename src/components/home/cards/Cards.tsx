@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay } from "swiper/modules";
 import { useState } from "react";
 
-import data from "../data.json";
+import { data } from "../data";
 
 import styles from "../Home.module.css";
 import "swiper/css";

@@ -37,9 +37,9 @@ export async function GET(request: Request) {
       if (username) top.push({ username, votes });
     }
 
-    return NextResponse.json(
-      {
-        period: period === "current" || period === "all" || period === "alltime" ? "current" : "monthly",
+    return NextResponse.json({
+      version: "top-route-v2-1767282135",
+      period: period === "current" || period === "all" || period === "alltime" ? "current" : "monthly",
         generatedUtc: new Date().toISOString(),
         top,
       },

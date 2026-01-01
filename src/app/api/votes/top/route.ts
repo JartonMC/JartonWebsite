@@ -11,37 +11,38 @@ const redis = new Redis({
 function utcMonthKey(date = new Date()) {
   const y = date.getUTCFullYear();
   const m = String(date.getUTCMonth() + 1).padStart(2, "0");
-  return `${y}-${m}`; // e.g. 2026-01
+  return `${y}-${m}`;
 }
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const period = (searchParams.get("period") || "current").toLowerCase();
+  const period = (searchParams.get("period") || "monthly").toLowerCase();
   const limit = Math.min(Math.max(parseInt(searchParams.get("limit") || "10", 10), 1), 50);
 
   const key =
-    period === "monthly"
-      ? `votes:leaderboard:${utcMonthKey()}`
-      : "votes:leaderboard";
+    period === "current" || period === "all" || period === "alltime"
+      ? "votes:leaderboard"
+      : `votes:leaderboard:${utcMonthKey()}`;
 
-  const top = await redis.zrange(key, 0, limit - 1, {
-    rev: true,
-    withScores: true,
-  });
+  const raw = await redis.zrange(key, 0, limit - 1, { rev: true, withScores: true });
 
-  const formatted: { username: string; votes: number }[] = [];
-  for (let i = 0; i < top.length; i += 2) {
-    formatted.push({
-      username: String(top[i]),
-      votes: Number(top[i + 1]),
-    });
+  const list: { username: string; votes: number }[] = [];
+  for (let i = 0; i < raw.length; i += 2) {
+    list.push({ username: String(raw[i]), votes: Number(raw[i + 1]) });
   }
 
-  return NextResponse.json({
-    version: "top-route-v3",
-    period,
-    keyUsed: key,
-    generatedUtc: new Date().toISOString(),
-    top: formatted,
-  });
+  return NextResponse.json(
+    {
+      period: period === "current" || period === "all" || period === "alltime" ? "current" : "monthly",
+      generatedUtc: new Date().toISOString(),
+
+      // ✅ your canonical field
+      top: list,
+
+      // ✅ compatibility fields (in case your vote page expects a different name)
+      voters: list,
+      data: list,
+    },
+    { headers: { "Cache-Control": "no-store" } }
+  );
 }

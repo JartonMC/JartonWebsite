@@ -1,31 +1,31 @@
 import { NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL!,
-  token: process.env.KV_REST_API_TOKEN!,
-});
-
-const AUTH_TOKEN = process.env.VOTE_AUTH_TOKEN;
+const redis = Redis.fromEnv();
 
 export async function POST(req: Request) {
-  const auth = req.headers.get("authorization");
+  try {
+    const body = await req.json();
+    const username = body?.username;
 
-  if (!AUTH_TOKEN || auth !== `Bearer ${AUTH_TOKEN}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!username || typeof username !== "string") {
+      return NextResponse.json(
+        { error: "Invalid username" },
+        { status: 400 }
+      );
+    }
+
+    // Increment vote count
+    await redis.zincrby("votes:leaderboard", 1, username);
+
+    return NextResponse.json({
+      success: true,
+      username,
+    });
+  } catch (err) {
+    return NextResponse.json(
+      { error: "Failed to record vote" },
+      { status: 500 }
+    );
   }
-
-  const body = await req.json();
-  const { username } = body;
-
-  if (!username) {
-    return NextResponse.json({ error: "Missing username" }, { status: 400 });
-  }
-
-  const key = `votes:${username.toLowerCase()}`;
-
-  await redis.incr(key);
-  await redis.zincrby("votes:leaderboard", 1, username.toLowerCase());
-
-  return NextResponse.json({ success: true });
 }

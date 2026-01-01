@@ -8,7 +8,7 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN!,
 });
 
-function getUtcMonthKey(date = new Date()) {
+function utcMonthKey(date = new Date()) {
   const y = date.getUTCFullYear();
   const m = String(date.getUTCMonth() + 1).padStart(2, "0");
   return `${y}-${m}`; // e.g. 2026-01
@@ -28,15 +28,15 @@ export async function POST(req: Request) {
     }
 
     const currentKey = "votes:leaderboard";
-    const monthKey = `votes:leaderboard:${getUtcMonthKey()}`;
+    const monthKey = `votes:leaderboard:${utcMonthKey()}`;
 
-    // increment BOTH current + monthly
     await Promise.all([
       redis.zincrby(currentKey, 1, username),
       redis.zincrby(monthKey, 1, username),
     ]);
 
     return NextResponse.json({
+      version: "push-route-v3",
       success: true,
       username,
       keys: { currentKey, monthKey },

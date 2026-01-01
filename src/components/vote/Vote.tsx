@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import voteData from "./vote.json";
-import { useEffect } from "react";
 import styles from "./Vote.module.css";
 
 const Vote = () => {
@@ -30,23 +29,31 @@ const Vote = () => {
 
     useEffect(() => {
       let isMounted = true;
+
       (async () => {
         try {
-          const res = await fetch('/api/vote/leaderboard', { cache: 'no-store' });
+          const res = await fetch(`/api/votes/top?period=monthly&limit=10&nocache=${Date.now()}`, {
+            cache: "no-store",
+          });
           if (!res.ok) return;
+
           const data = await res.json();
           if (!isMounted) return;
-          if (Array.isArray(data.leaderboard) && data.leaderboard.length > 0) {
-            type LeaderboardItem = { player: string; votes: number };
-            const next = (data.leaderboard as LeaderboardItem[]).map((item: LeaderboardItem, i: number) => ({
+
+          // Our API returns: { top: [{ username, votes }] }
+          const src = Array.isArray(data?.top) ? data.top : [];
+
+          if (src.length > 0) {
+            const next = src.map((item: { username: string; votes: number }, i: number) => ({
               rank: i + 1,
-              player: item.player,
+              player: item.username,
               votes: item.votes,
             }));
             setRows(next);
           }
         } catch {}
       })();
+
       return () => { isMounted = false; };
     }, []);
 
@@ -117,7 +124,7 @@ const Vote = () => {
               Sites reset daily at <strong>midnight UTC</strong>. Bedrock players can vote too!
             </p>
           </div>
-          
+
           <div className={styles.panel}>
             <h3>What you get</h3>
             <ul className={styles.rewardsList}>
@@ -151,7 +158,7 @@ const Vote = () => {
             </table>
             <p className={styles.muted}>Updated monthly - keep voting to climb the ranks!</p>
           </div>
-          
+
           <div className={styles.panel}>
             <h3>Common issues</h3>
             {voteData.faq.map((faqItem, index) => (
@@ -165,10 +172,10 @@ const Vote = () => {
 
         <div className={styles.discord}>
           <span>{voteData.discord.text}</span>
-          <a 
-            className={styles.joinDiscord} 
-            href={voteData.discord.url} 
-            target="_blank" 
+          <a
+            className={styles.joinDiscord}
+            href={voteData.discord.url}
+            target="_blank"
             rel="noopener noreferrer"
           >
             Join Discord

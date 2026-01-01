@@ -1,31 +1,20 @@
 import { NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 
-const redis = Redis.fromEnv();
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
 
 export async function POST(req: Request) {
-  try {
-    const body = await req.json();
-    const username = body?.username;
+  const body = await req.json();
+  const username = body?.username;
 
-    if (!username || typeof username !== "string") {
-      return NextResponse.json(
-        { error: "Invalid username" },
-        { status: 400 }
-      );
-    }
-
-    // Increment vote count
-    await redis.zincrby("votes:leaderboard", 1, username);
-
-    return NextResponse.json({
-      success: true,
-      username,
-    });
-  } catch (err) {
-    return NextResponse.json(
-      { error: "Failed to record vote" },
-      { status: 500 }
-    );
+  if (!username || typeof username !== "string") {
+    return NextResponse.json({ error: "Invalid username" }, { status: 400 });
   }
+
+  await redis.zincrby("votes:leaderboard", 1, username);
+
+  return NextResponse.json({ success: true, username });
 }

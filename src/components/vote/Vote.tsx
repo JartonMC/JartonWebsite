@@ -20,7 +20,13 @@ const Vote = () => {
 
   const ChevronIcon = () => (
     <svg className={styles.chevron} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M9 6l6 6-6 6" stroke="var(--color2)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path
+        d="M9 6l6 6-6 6"
+        stroke="var(--color2)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 
@@ -40,7 +46,6 @@ const Vote = () => {
           const data = await res.json();
           if (!isMounted) return;
 
-          // Our API returns: { top: [{ username, votes }] }
           const src = Array.isArray(data?.top) ? data.top : [];
 
           if (src.length > 0) {
@@ -54,7 +59,9 @@ const Vote = () => {
         } catch {}
       })();
 
-      return () => { isMounted = false; };
+      return () => {
+        isMounted = false;
+      };
     }, []);
 
     if (rows.length === 0) {
@@ -116,7 +123,9 @@ const Vote = () => {
           <div className={styles.panel}>
             <h3>How to vote</h3>
             <ol className={styles.instructionsList}>
-              <li>Click each site above and enter your <strong>exact username</strong></li>
+              <li>
+                Click each site above and enter your <strong>exact username</strong>
+              </li>
               <li>Complete any captchas and hit submit</li>
               <li>Join the server to collect your rewards!</li>
             </ol>
@@ -152,7 +161,6 @@ const Vote = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* Dynamic leaderboard fetched from API with static fallback */}
                 <LeaderboardFallback />
               </tbody>
             </table>
@@ -163,7 +171,9 @@ const Vote = () => {
             <h3>Common issues</h3>
             {voteData.faq.map((faqItem, index) => (
               <details key={index} open={index === 0}>
-                <summary><strong>{faqItem.question}</strong></summary>
+                <summary>
+                  <strong>{faqItem.question}</strong>
+                </summary>
                 <p className={styles.muted}>{faqItem.answer}</p>
               </details>
             ))}
@@ -172,12 +182,7 @@ const Vote = () => {
 
         <div className={styles.discord}>
           <span>{voteData.discord.text}</span>
-          <a
-            className={styles.joinDiscord}
-            href={voteData.discord.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className={styles.joinDiscord} href={voteData.discord.url} target="_blank" rel="noopener noreferrer">
             Join Discord
           </a>
         </div>

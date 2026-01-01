@@ -187,7 +187,7 @@ const Vote = () => {
           </a>
         </div>
 
-        <footer className={styles.footer}>© 2025 JartonMC</footer>
+        <footer className={styles.footer}>© 2026 JartonMC</footer>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ export const data = {
   status: {
     ip: "mc.jarton.me",
     discord: {
-      invite: "7tBwkGD4sN",
+      invite: "y5ZFmHUuhc",
       id: "1391645092137406494",
     },
   },

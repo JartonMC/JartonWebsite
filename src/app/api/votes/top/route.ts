@@ -1,63 +1,47 @@
-// src/app/api/votes/top/route.ts
 import { NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 const redis = new Redis({
   url: process.env.KV_REST_API_URL!,
   token: process.env.KV_REST_API_TOKEN!,
 });
 
-function getMonthlyKey(date = new Date()) {
+function utcMonthKey(date = new Date()) {
   const y = date.getUTCFullYear();
   const m = String(date.getUTCMonth() + 1).padStart(2, "0");
-  return `votes:leaderboard:${y}-${m}`;
+  return `${y}-${m}`; // e.g. 2026-01
 }
 
-export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const period = (searchParams.get("period") || "monthly").toLowerCase();
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const period = (searchParams.get("period") || "current").toLowerCase();
+  const limit = Math.min(Math.max(parseInt(searchParams.get("limit") || "10", 10), 1), 50);
 
-    // monthly = your site table
-    // current = your old "all-time/current" key
-    const key =
-      period === "current" || period === "all" || period === "alltime"
-        ? "votes:leaderboard"
-        : getMonthlyKey();
+  const key =
+    period === "monthly"
+      ? `votes:leaderboard:${utcMonthKey()}`
+      : "votes:leaderboard";
 
-    // Upstash zrange withScores returns [member, score, member, score...]
-    const raw = await redis.zrange(key, 0, 9, { rev: true, withScores: true });
+  const top = await redis.zrange(key, 0, limit - 1, {
+    rev: true,
+    withScores: true,
+  });
 
-    const top: Array<{ username: string; votes: number }> = [];
-    for (let i = 0; i < raw.length; i += 2) {
-      const username = String(raw[i]);
-      const votes = Number(raw[i + 1] ?? 0);
-      if (username) top.push({ username, votes });
-    }
-
-    return NextResponse.json({
-      version: "top-route-v2-1767282135",
-      period: period === "current" || period === "all" || period === "alltime" ? "current" : "monthly",
-        generatedUtc: new Date().toISOString(),
-        top,
-      },
-      {
-        headers: {
-          "Cache-Control": "no-store",
-        },
-      }
-    );
-  } catch (err: any) {
-    return NextResponse.json(
-      {
-        period: "error",
-        generatedUtc: new Date().toISOString(),
-        top: [],
-        error: err?.message || "Unknown error",
-      },
-      { status: 500 }
-    );
+  const formatted: { username: string; votes: number }[] = [];
+  for (let i = 0; i < top.length; i += 2) {
+    formatted.push({
+      username: String(top[i]),
+      votes: Number(top[i + 1]),
+    });
   }
+
+  return NextResponse.json({
+    version: "top-route-v3",
+    period,
+    keyUsed: key,
+    generatedUtc: new Date().toISOString(),
+    top: formatted,
+  });
 }

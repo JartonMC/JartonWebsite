@@ -49,9 +49,9 @@
   width: var(--websiteLogoSize);
   height: var(--websiteLogoSize);
   position: absolute;
-  animation: jumping 5s ease-in-out infinite;
+  animation: jumping 3s ease-in-out infinite;
   transition: scale 0.3s ease-in-out;
-  top: 60px;
+  top: 150px;
 }
 
 @media (max-width: 600px) {

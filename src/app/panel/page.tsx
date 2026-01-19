@@ -3,7 +3,7 @@ import styles from "./panel.module.css";
 
 export const metadata = {
   title: "Admin Links | JartonMC",
-  description: "Choose an admin destination: Coolify or Panel",
+  description: "Choose an admin destination: Git or Panel",
 };
 
 const PanelChooser = () => {
@@ -15,12 +15,12 @@ const PanelChooser = () => {
 
         <div className={styles.grid}>
           <Link
-            href="https://web.jarton.me/"
+            href="https://git.jarton.me/"
             target="_blank"
             className={`${styles.tile} ${styles.coolify}`}
           >
-            <span className={styles.tileTitle}>Coolify</span>
-            <span className={styles.tileDesc}>Deployments · Logs · Services</span>
+            <span className={styles.tileTitle}>Git</span>
+            <span className={styles.tileDesc}>Backups · Plugins · Services</span>
           </Link>
 
           <Link

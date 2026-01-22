@@ -23,7 +23,7 @@ export const data = {
       description:
         "Our team is dedicated to pushing consistent updates, fixes, and improvements to keep JartonMC evolving every step of the way.",
       link: "https://wiki.jarton.me/changelog/",
-      linkText: "View Changelog →",
+      linkText: "Click to View Changelog",
     },
   ],
 };

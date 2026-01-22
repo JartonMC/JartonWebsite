@@ -29,19 +29,48 @@ const Cards = () => {
         className={styles.home_cards_swiper}
         wrapperClass={styles.home_cards_swiper_wrapper}
       >
-        {cards.map((card, index) => (
-          <SwiperSlide className={styles.home_cards_swiper_slide} key={index}>
-            <span className={styles.home_cards_swiper_slide_title}>
-              {card.title}
-            </span>
-            <pre className={styles.home_cards_swiper_slide_description}>
-              {card.description}
-            </pre>
-          </SwiperSlide>
-        ))}
+        {cards.map((card, index) => {
+          const isLink = typeof card.link === "string" && card.link.length > 0;
+
+          const content = (
+            <>
+              <span className={styles.home_cards_swiper_slide_title}>
+                {card.title}
+              </span>
+
+              <pre className={styles.home_cards_swiper_slide_description}>
+                {card.description}
+              </pre>
+
+              {isLink && (
+                <span className={styles.home_cards_swiper_slide_cta}>
+                  {card.linkText || "Click me →"}
+                </span>
+              )}
+            </>
+          );
+
+          return (
+            <SwiperSlide className={styles.home_cards_swiper_slide} key={index}>
+              {isLink ? (
+                <a
+                  href={card.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.home_cards_swiper_slide_link}
+                >
+                  {content}
+                </a>
+              ) : (
+                content
+              )}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
 };
 
 export default Cards;
+

@@ -19,9 +19,11 @@ export const data = {
         "Join from any platform using our Bedrock-compatible system. Sweet and smooth. No more leaving behind your bedrock friends!",
     },
     {
-      title: "Community Orriented",
+      title: "Dedicated Staff",
       description:
-        "Minecraft is more fun with friends. We've built this server with that in mind. Enjoy a community driven community!",
+        "Our team is dedicated to pushing consistent updates, fixes, and improvements to keep JartonMC evolving every step of the way.",
+      link: "https://wiki.jarton.me/changelog/",
+      linkText: "View Changelog →",
     },
   ],
 };

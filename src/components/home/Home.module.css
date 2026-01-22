@@ -276,6 +276,7 @@
   border-radius: 10px;
   box-shadow: var(--boxShadow3);
   cursor: w-resize;
+  will-change: transform, box-shadow;
 }
 
 .home_cards_swiper_slide_title {
@@ -296,6 +297,12 @@
    Clickable card support
    ========================= */
 
+/* Added: used by Cards.tsx to mark only linked slides as clickable */
+.home_cards_swiper_slide_clickable {
+  cursor: pointer !important; /* overrides w-resize */
+}
+
+/* Make link fill the entire card without changing layout */
 .home_cards_swiper_slide_link {
   display: flex;
   flex-direction: column;
@@ -306,20 +313,35 @@
   height: 100%;
   color: inherit;
   text-decoration: none;
-  cursor: pointer;
 }
 
+/* CTA: clean + subtle external-link indicator (not a "pointing arrow") */
 .home_cards_swiper_slide_cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-top: 10px;
   font-weight: 800;
   color: var(--color1);
   text-shadow: var(--textShadow1);
+  opacity: 0.95;
 }
 
-@media only screen and (min-width: 1024px) {
-  .home_cards_swiper_slide_link:hover {
-    transform: translateY(-3px) scale(1.02);
+.home_cards_swiper_slide_cta::after {
+  content: "↗";
+  font-size: calc(var(--fontSize) + 2px);
+  line-height: 1;
+  opacity: 0.85;
+}
+
+/* Natural hover: apply to the card (slide), not the anchor */
+@media (hover: hover) {
+  .home_cards_swiper_slide_clickable:hover {
+    transform: translateY(-2px);
     box-shadow: var(--boxShadow2);
+  }
+
+  .home_cards_swiper_slide_clickable:hover .home_cards_swiper_slide_cta {
+    opacity: 1;
   }
 }

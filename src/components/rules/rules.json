@@ -1,42 +1,235 @@
 [
   {
-    "title": "Basic Rules",
+    "title": "Chat Guidelines",
+    "intro": "We keep our chat heavily enforced, this is to minimize security risks and for the protection of our players, All of the guidelines listed here are enforceable by removal of your chatting privileges.",
     "items": [
-      "Be respectful to everyone - no harassment, bullying, or hate speech",
-      "Keep chat and builds family-friendly (no NSFW content)",
-      "Don't pretend to be staff members or other players", 
-      "No excessive spam or caps lock in chat",
-      "Resolve conflicts maturely or ask staff for help"
+      {
+        "label": "Spamming/Flooding",
+        "details": [
+          "Do not attempt to spam/flood the chat. This includes encouraging others to do the same as well as @'ing staff without a valid reason."
+        ]
+      },
+      {
+        "label": "Toxicity",
+        "details": [
+          "JartonMC upholds a strict NO BULLYING policy; if you are found intentionally harassing, bullying, or causing mass distress, you will be punished accordingly."
+        ]
+      },
+      {
+        "label": "Links/Advertising",
+        "details": [
+          "Please do not self advertise, this is our server, our community that we have built, not a area for you to be advertising your own community."
+        ]
+      },
+      {
+        "label": "Inappropriate Chat",
+        "details": [
+          "Do not discuss inappropriate topics. This includes inappropriate content/toxic behaviour, bypassing the chat filter, and staff impersonation."
+        ]
+      },
+      {
+        "label": "Mental Health",
+        "details": [
+          "Do not joke or mention suicide, self-harm, or other sensitive topics."
+        ]
+      },
+      {
+        "label": "Discrimination",
+        "details": [
+          "Do not discriminate or use racist, sexist, homophobic, or derogatory language toward players."
+        ]
+      },
+      {
+        "label": "DDoS & Dox",
+        "details": [
+          "Do not threaten or attempt to DDoS, Dox, or exploit the server or a player. This includes using IP grabbers and sharing any form of personal information."
+        ]
+      },
+      {
+        "label": "Hackusating/False Reports",
+        "details": [
+          "Do not intentionally false accuse another player in chat when they obviously aren't."
+        ]
+      },
+      {
+        "label": "Sexual/Illicit Language/Content",
+        "details": [
+          "Do not use any sexually oriented language, or language containing explicit or illegal content."
+        ]
+      },
+      {
+        "label": "English Only",
+        "details": [
+          "We uphold a strict \"english only\" policy for all text and voice chats within JartonMC, including in-game Minecraft chat."
+        ]
+      },
+      {
+        "label": "Lying/Scamming Staff",
+        "details": [
+          "Lying to staff, providing false information, or attempting to scam staff members during tickets, reports, or investigations is strictly prohibited."
+        ]
+      },
+      {
+        "label": "Staff Disrespect/Harrassment/Impersonation",
+        "details": [
+          "Disrespecting, insulting, or arguing with staff members while they are performing their duties is not allowed and may result in punishment.",
+          "Harassing, spamming, pinging, being toxic, or targeting staff members in chat, private messages, or in-game behavior is strictly prohibited.",
+          "Pretending to be a staff member, using staff names, ranks, or disguises to deceive or manipulate other players is strictly prohibited."
+        ]
+      },
+      {
+        "label": "Server Threats",
+        "details": [
+          "Threatening the server, its staff, or its community in any way, including DDoS threats, hacking threats, or other forms of intimidation, is strictly prohibited and may result in severe punishment."
+        ]
+      }
     ]
   },
   {
-    "title": "Gameplay Rules", 
+    "title": "General Minecraft Rules",
     "items": [
-      "No hacks, cheats, or exploits (x-ray, fly, speed hacks, etc.)",
-      "Report bugs with '/ticket' - don't abuse them",
-      "One main account per person (ask staff before using alts)",
-      "No griefing or stealing from other players",
-      "PvP is allowed in designated areas only"
+      {
+        "label": "Alt accounts",
+        "details": [
+          "Players may only have a maximum of 2 accounts online at any given time. Using additional accounts beyond this limit is not allowed.",
+          "Any AFK-related punishments still apply to all accounts."
+        ]
+      },
+      {
+        "label": "Bypassing Punishments",
+        "details": [
+          "Using alternative accounts to bypass a any form of punishment is not allowed."
+        ]
+      },
+      {
+        "label": "Botting",
+        "details": [
+          "Controlling mass amounts of accounts to use for spamming or automating tasks like mining or farming isn't allowed."
+        ]
+      },
+      {
+        "label": "Printers",
+        "details": [
+          "Using Printer, including other similar mods/programs is not allowed. However, the use of schematica or litematica is allowed."
+        ]
+      },
+      {
+        "label": "Exploits/Gameplay Bugs",
+        "details": [
+          "Do not use or attempt to use any exploits to gain an advantage or abuse a bug. Including using features inappropriately/not as they were intended."
+        ]
+      },
+      {
+        "label": "Association",
+        "details": [
+          "Associating yourself with cheaters may result in punishment."
+        ]
+      },
+      {
+        "label": "Teleport Trapping",
+        "details": [
+          "Teleporting players into a location designed to kill, trap, or unfairly harm them (including hidden pits, lava boxes, kill chambers, or inescapable cages) is strictly prohibited."
+        ]
+      },
+      {
+        "label": "Idle AFK/AutoClick AFK",
+        "details": [
+          "Idle AFKing or using autoclickers to gain an advantage while away from your keyboard is not allowed. This includes staying in one place to farm, mine, or collect resources automatically."
+        ]
+      },
+      {
+        "label": "Greifing",
+        "details": [
+          "Griefing is not allowed. This includes destroying, stealing, modifying, or tampering with any builds, chests, farms, or protected areas that do not belong to you, regardless of claim status."
+        ]
+      }
     ]
   },
   {
-    "title": "Building & Economy",
+    "title": "Staff Discretion Notice",
     "items": [
-      "Build at least 100 blocks away from others unless given permission",
-      "No inappropriate builds, signs, or symbols",
-      "Don't duplicate items or abuse the economy",
-      "Shops must have fair prices (no scamming)",
-      "Clean up temporary builds and don't leave floating trees"
+      {
+        "label": "WARNING",
+        "details": [
+          "This list is not a full and final list of every rule.",
+          "The staff team reserves the right to judge each case individually and punish or forgive at their discretion."
+        ]
+      }
     ]
   },
   {
-    "title": "Chat & Communication",
+    "title": "Unfair Modifications",
     "items": [
-      "English only in global chat (other languages in /msg or party chat)",
-      "No advertising other servers or Discord links",
-      "Don't ask for staff ranks, items, or special treatment",
-      "Use appropriate channels in Discord",
-      "No drama or arguments in public chat"
+      {
+        "label": "Unfair Modifications",
+        "details": [
+          "Using unfair modifications and/or clients that provide an unfair advantage is strictly forbidden.",
+          "This includes clients like Wurst, Meteor and Aristois , as well as modifications like Auto Clicker."
+        ],
+        "link": {
+          "text": "Unfair Modification List",
+          "url": "https://docs.google.com/spreadsheets/d/1fmzU3741SVE8cL9-QN15WaK3oPoiaDrc3U0OaRq9Sno/edit?usp=sharing"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Automatic Farming Guidelines",
+    "items": [
+      {
+        "label": "Staff Discretion",
+        "details": [
+          "Staff will use discretion while gauging automatic farms. If you have any concerns with your farm, please ask a helper or moderator for more information."
+        ]
+      },
+      {
+        "label": "Place Limit",
+        "details": [
+          "Observer: x64",
+          "Piston & Sticky Piston: x64",
+          "Hopper: x16"
+        ]
+      },
+      {
+        "label": "Flying Machines",
+        "details": [
+          "Automated flying machines that move blocks, farms, or players are not allowed. They cause lag, can bypass protections, and create unfair advantages.",
+          "Any form of redstone-powered flying contraption is prohibited."
+        ]
+      },
+      {
+        "label": "Killing Machines",
+        "details": [
+          "Any kind of automatic animal killing machine is not permitted; this is qualified as having your mobs drop on top of lava or magma blocks, or other blocks alike."
+        ]
+      },
+      {
+        "label": "Chunk Loaders",
+        "details": [
+          "Nether Portal Minecart chunkloaders (Nether portal with minecarts going in and out)",
+          "Ender Pearl Stasis chamber chunkloaders (Stasis chambers every chunk)"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Trading Guidelines",
+    "items": [
+      {
+        "label": "IRL Trades",
+        "details": [
+          "A trade is only considered \"IRL\" if it involves real life currency such as USD, Euros, etc etc.",
+          "All IRL trades MUST be made within the JartonMC store, whether that's with a store gift card, gifted coins etc etc.",
+          "Any IRL trading done outside of the JartonMC store will result in a permanent ban"
+        ]
+      },
+      {
+        "label": "Scamming",
+        "details": [
+          "Scamming with IRL trades will result in a permanent ban AND full compensation for the victim.",
+          "IRL trade offers within the trading channel in the discord are fully monitored and insured by the server."
+        ]
+      }
     ]
   }
 ]

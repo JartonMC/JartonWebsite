@@ -6,9 +6,10 @@
   width: calc(var(--windowWidth) - 20px);
   position: relative;
   font-family: "Quicksand";
-  background-color: rgba(var(--rgbColor6), 0.6);
+  /* IMPORTANT: remove large-area blur/tint so background doesn't look "zoomed" */
+  background-color: transparent;
   border-radius: 20px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   padding: 10px;
   margin: 10px 0;
 }
@@ -16,11 +17,19 @@
 .card {
   width: 100%;
   max-width: 980px;
-  background: linear-gradient(180deg, rgba(var(--rgbColor6), 0.7), rgba(var(--rgbColor6), 0.9));
+  /* Keep your glass look INSIDE the card instead */
+  background: linear-gradient(
+    180deg,
+    rgba(var(--rgbColor6), 0.7),
+    rgba(var(--rgbColor6), 0.9)
+  );
   border: 1px solid rgba(var(--rgbColor4), 0.3);
   border-radius: 22px;
   box-shadow: var(--boxShadow3);
   overflow: hidden;
+
+  /* moved from .rules */
+  backdrop-filter: blur(10px);
 }
 
 .header {
@@ -256,7 +265,11 @@
 }
 
 .footer {
-  background: linear-gradient(90deg, rgba(var(--rgbColor6), 0.9), rgba(var(--rgbColor6), 0.7));
+  background: linear-gradient(
+    90deg,
+    rgba(var(--rgbColor6), 0.9),
+    rgba(var(--rgbColor6), 0.7)
+  );
   border-top: 1px solid rgba(var(--rgbColor4), 0.3);
   padding: 20px;
   margin-top: 10px;

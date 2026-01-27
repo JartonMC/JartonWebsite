@@ -1,22 +1,29 @@
 .rules {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   width: calc(var(--windowWidth) - 20px);
-  position: relative;
   font-family: "Quicksand";
   background-color: rgba(var(--rgbColor6), 0.6);
-  border-radius: 20px;
   backdrop-filter: blur(10px);
+  border-radius: 20px;
   padding: 10px;
   margin: 10px 0;
+
+  /* background behavior (won't break global background, but keeps things sane here) */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .card {
   width: 100%;
-  max-width: 980px;
-  background: linear-gradient(180deg, rgba(var(--rgbColor6), 0.7), rgba(var(--rgbColor6), 0.9));
+  max-width: 1100px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--rgbColor6), 0.7),
+    rgba(var(--rgbColor6), 0.9)
+  );
   border: 1px solid rgba(var(--rgbColor4), 0.3);
   border-radius: 22px;
   box-shadow: var(--boxShadow3);
@@ -41,26 +48,69 @@
 }
 
 .subtitle {
-  margin: 8px 0 0;
+  margin: 8px auto 0;
   color: rgba(var(--rgbColor5), 0.8);
   font-size: calc(var(--fontSize) + 4px);
   line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 760px;
 }
 
+/* Notice */
+.notice {
+  margin: 16px auto 0;
+  max-width: 860px;
+  display: flex;
+  gap: 12px;
+  text-align: left;
+  background: rgba(var(--rgbColor2), 0.14);
+  border: 1px solid rgba(var(--rgbColor2), 0.25);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.noticeIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--rgbColor2), 0.18);
+  border: 1px solid rgba(var(--rgbColor2), 0.25);
+}
+
+.noticeText {
+  color: rgba(var(--rgbColor5), 0.9);
+  line-height: 1.55;
+}
+
+.noticeText strong {
+  color: var(--color2);
+}
+
+/* Grid */
 .rulesGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 18px;
   padding: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 820px) {
   .rulesGrid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (min-width: 1320px) {
+  .rulesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* only really matters on 2/3 column layouts */
+.wideSection {
+  grid-column: 1 / -1;
 }
 
 .ruleSection {
@@ -68,13 +118,6 @@
   border: 1px solid rgba(var(--rgbColor4), 0.3);
   border-radius: 16px;
   padding: 20px;
-  transition: all 0.3s ease-in-out;
-}
-
-.ruleSection:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--boxShadow2);
-  border-color: rgba(var(--rgbColor2), 0.5);
 }
 
 .sectionHeader {
@@ -87,23 +130,21 @@
 }
 
 .sectionIcon {
-  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(var(--rgbColor2), 0.2);
+  border: 1px solid rgba(var(--rgbColor2), 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(var(--rgbColor2), 0.2);
-  border-radius: 50%;
-  border: 1px solid rgba(var(--rgbColor2), 0.3);
 }
 
 .sectionTitle {
   margin: 0;
-  color: var(--color2);
   font-family: "FredokaOne";
+  color: var(--color2);
   font-size: calc(var(--fontSize) + 8px);
-  flex: 1;
 }
 
 .rulesList {
@@ -114,139 +155,121 @@
 
 .ruleItem {
   display: flex;
-  align-items: flex-start;
   gap: 12px;
   padding: 12px;
   background: rgba(var(--rgbColor6), 0.5);
   border-radius: 12px;
   border: 1px solid rgba(var(--rgbColor4), 0.2);
-  transition: all 0.3s ease-in-out;
-}
-
-.ruleItem:hover {
-  background: rgba(var(--rgbColor6), 0.7);
-  border-color: rgba(var(--rgbColor2), 0.3);
 }
 
 .ruleNumber {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 24px;
   height: 24px;
   background: var(--color2);
   color: var(--color6);
   border-radius: 50%;
-  font-size: calc(var(--fontSize) - 1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .ruleText {
   color: var(--color5);
-  font-size: calc(var(--fontSize) + 1px);
   line-height: 1.5;
-  flex: 1;
 }
 
+/* Normal links (rare) */
+.ruleLink {
+  color: var(--color2);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(var(--rgbColor2), 0.6);
+}
+
+/* ✅ Inline “Click here” mini-button inside a rule row */
+.inlineLinkButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  margin-left: 6px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--color2);
+  background: rgba(var(--rgbColor2), 0.14);
+  border: 1px solid rgba(var(--rgbColor2), 0.25);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.inlineLinkButton:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+/* Footer */
 .footer {
-  background: linear-gradient(90deg, rgba(var(--rgbColor6), 0.9), rgba(var(--rgbColor6), 0.7));
   border-top: 1px solid rgba(var(--rgbColor4), 0.3);
   padding: 20px;
-  margin-top: 10px;
 }
 
 .footerContent {
   text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.footerContent h3 {
-  margin: 0 0 8px;
-  color: var(--color2);
-  font-family: "FredokaOne";
-  font-size: calc(var(--fontSize) + 6px);
-}
-
-.footerContent p {
-  margin: 0 0 16px;
-  color: rgba(var(--rgbColor5), 0.8);
-  font-size: calc(var(--fontSize) + 1px);
-  line-height: 1.6;
 }
 
 .contactInfo {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
   align-items: center;
 }
 
-@media (min-width: 600px) {
-  .contactInfo {
-    flex-direction: row;
-    justify-content: center;
-    gap: 24px;
-  }
-}
-
-.contactInfo span {
-  display: flex;
+/* ✅ Unified CTA styles so nothing looks “weird” */
+.ctaPill {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   color: var(--color5);
   font-size: calc(var(--fontSize) + 1px);
   background: rgba(var(--rgbColor4), 0.3);
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
   border: 1px solid rgba(var(--rgbColor4), 0.4);
 }
 
-.contactInfo code {
+.ctaPill code {
   background: rgba(var(--rgbColor2), 0.2);
   color: var(--color2);
-  border-radius: 4px;
+  border-radius: 6px;
   font-family: "Minecraftia";
   font-size: calc(var(--fontSize) - 1px);
-  padding: 10px 6px 2px 6px;
+  padding: 10px 8px 2px 8px;
   line-height: calc(var(--fontSize));
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .header {
-    padding: 20px 16px 10px;
-  }
-  
-  .rulesGrid {
-    padding: 15px;
-    gap: 15px;
-  }
-  
-  .ruleSection {
-    padding: 16px;
-  }
-  
-  .sectionIcon {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
-  }
-  
-  .footer {
-    padding: 16px;
-  }
-  
-  .ruleItem {
-    padding: 10px;
-    gap: 10px;
-  }
-  
-  .ruleNumber {
-    width: 22px;
-    height: 22px;
-    font-size: calc(var(--fontSize) - 2px);
-  }
+/* Discord button now matches the “pill” system, but still looks clickable */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: calc(var(--fontSize) + 1px);
+  font-weight: 800;
+  color: var(--color6);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--rgbColor2), 0.95),
+    rgba(var(--rgbColor2), 0.78)
+  );
+  border-radius: 10px;
+  border: 1px solid rgba(var(--rgbColor2), 0.75);
+  text-decoration: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
 }

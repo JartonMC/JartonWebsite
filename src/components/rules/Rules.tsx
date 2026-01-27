@@ -1,4 +1,3 @@
-import { useMemo, useState } from "react";
 import rules from "./rules.json";
 import styles from "./Rules.module.css";
 
@@ -29,14 +28,6 @@ const Rules = () => {
 
   const sections = rules as RuleSection[];
 
-  const defaultOpen = useMemo(() => {
-    // Open Chat Guidelines by default if present, otherwise first section
-    const idx = sections.findIndex((s) => s.title.toLowerCase().includes("chat"));
-    return idx >= 0 ? idx : 0;
-  }, [sections]);
-
-  const [openIndex, setOpenIndex] = useState<number>(defaultOpen);
-
   return (
     <div className={styles.rules}>
       <div className={styles.card}>
@@ -50,70 +41,48 @@ const Rules = () => {
           </p>
         </header>
 
-        {/* Accordion Sections */}
-        <div className={styles.sections}>
-          {sections.map((section, sectionIndex) => {
-            const isOpen = openIndex === sectionIndex;
+        <div className={styles.rulesGrid}>
+          {sections.map((section, sectionIndex) => (
+            <div key={sectionIndex} className={styles.ruleSection}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionIcon}>{getSectionIcon(section.title)}</span>
+                <h3 className={styles.sectionTitle}>{section.title}</h3>
+              </div>
 
-            return (
-              <section key={sectionIndex} className={styles.section}>
-                <button
-                  type="button"
-                  className={styles.sectionToggle}
-                  onClick={() => setOpenIndex(isOpen ? -1 : sectionIndex)}
-                  aria-expanded={isOpen}
-                >
-                  <span className={styles.sectionLeft}>
-                    <span className={styles.sectionIcon}>{getSectionIcon(section.title)}</span>
-                    <span className={styles.sectionTitleWrap}>
-                      <span className={styles.sectionTitle}>{section.title}</span>
-                      <span className={styles.sectionMeta}>
-                        {section.items.length} rule{section.items.length === 1 ? "" : "s"}
-                      </span>
-                    </span>
-                  </span>
+              {section.intro && <p className={styles.sectionIntro}>{section.intro}</p>}
 
-                  <span className={styles.sectionChevron}>{isOpen ? "▾" : "▸"}</span>
-                </button>
+              <div className={styles.rulesList}>
+                {section.items.map((item, itemIndex) => (
+                  <div key={itemIndex} className={styles.ruleItem}>
+                    <span className={styles.ruleNumber}>{itemIndex + 1}</span>
 
-                {isOpen && (
-                  <div className={styles.sectionBody}>
-                    {section.intro && <p className={styles.sectionIntro}>{section.intro}</p>}
+                    <div className={styles.ruleBody}>
+                      <div className={styles.ruleHeading}>{item.label}</div>
 
-                    <div className={styles.itemsGrid}>
-                      {section.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className={styles.ruleCard}>
-                          <div className={styles.ruleCardHeader}>
-                            <span className={styles.ruleBadge}>{itemIndex + 1}</span>
-                            <span className={styles.ruleHeading}>{item.label}</span>
-                          </div>
+                      {item.details && item.details.length > 0 && (
+                        <ul className={styles.ruleDetails}>
+                          {item.details.map((d, i) => (
+                            <li key={i}>{d}</li>
+                          ))}
+                        </ul>
+                      )}
 
-                          {item.details && item.details.length > 0 && (
-                            <ul className={styles.ruleDetails}>
-                              {item.details.map((d, i) => (
-                                <li key={i}>{d}</li>
-                              ))}
-                            </ul>
-                          )}
-
-                          {item.link?.url && (
-                            <a
-                              className={styles.ruleLink}
-                              href={item.link.url}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {item.link.text || "View Link"}
-                            </a>
-                          )}
-                        </div>
-                      ))}
+                      {item.link?.url && (
+                        <a
+                          className={styles.ruleLink}
+                          href={item.link.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {item.link.text || "View Link"}
+                        </a>
+                      )}
                     </div>
                   </div>
-                )}
-              </section>
-            );
-          })}
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className={styles.footer}>

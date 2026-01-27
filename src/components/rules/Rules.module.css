@@ -45,7 +45,7 @@
   color: rgba(var(--rgbColor5), 0.8);
   font-size: calc(var(--fontSize) + 4px);
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -81,7 +81,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(var(--rgbColor4), 0.2);
 }
@@ -104,6 +104,17 @@
   font-family: "FredokaOne";
   font-size: calc(var(--fontSize) + 8px);
   flex: 1;
+}
+
+.sectionIntro {
+  margin: 10px 0 16px;
+  color: rgba(var(--rgbColor5), 0.85);
+  line-height: 1.7;
+  font-size: calc(var(--fontSize) + 1px);
+  background: rgba(var(--rgbColor6), 0.45);
+  border: 1px solid rgba(var(--rgbColor4), 0.18);
+  border-radius: 12px;
+  padding: 12px 14px;
 }
 
 .rulesList {
@@ -143,11 +154,66 @@
   margin-top: 2px;
 }
 
-.ruleText {
-  color: var(--color5);
-  font-size: calc(var(--fontSize) + 1px);
-  line-height: 1.5;
+.ruleBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   flex: 1;
+  min-width: 0;
+}
+
+.ruleHeading {
+  color: var(--color5);
+  font-weight: 700;
+  font-size: calc(var(--fontSize) + 2px);
+  line-height: 1.35;
+}
+
+.ruleDetails {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: rgba(var(--rgbColor5), 0.9);
+  font-size: calc(var(--fontSize) + 1px);
+  line-height: 1.55;
+}
+
+.ruleDetails li {
+  list-style: none;
+  position: relative;
+  padding-left: 14px;
+}
+
+.ruleDetails li::before {
+  content: "↪";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color2);
+  font-weight: 700;
+}
+
+.ruleLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: var(--color2);
+  text-decoration: none;
+  font-weight: 700;
+  background: rgba(var(--rgbColor2), 0.12);
+  border: 1px solid rgba(var(--rgbColor2), 0.25);
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.ruleLink:hover {
+  transform: translateY(-1px);
+  border-color: rgba(var(--rgbColor2), 0.5);
+  background: rgba(var(--rgbColor2), 0.18);
 }
 
 .footer {
@@ -219,34 +285,38 @@
   .header {
     padding: 20px 16px 10px;
   }
-  
+
   .rulesGrid {
     padding: 15px;
     gap: 15px;
   }
-  
+
   .ruleSection {
     padding: 16px;
   }
-  
+
   .sectionIcon {
     width: 36px;
     height: 36px;
     font-size: 20px;
   }
-  
+
   .footer {
     padding: 16px;
   }
-  
+
   .ruleItem {
     padding: 10px;
     gap: 10px;
   }
-  
+
   .ruleNumber {
     width: 22px;
     height: 22px;
     font-size: calc(var(--fontSize) - 2px);
+  }
+
+  .sectionIntro {
+    padding: 10px 12px;
   }
 }
